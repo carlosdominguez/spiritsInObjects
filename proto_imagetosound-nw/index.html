@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		
+		<meta content="user-scalable = yes"></meta>
+		<link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+		<link href="js/styling.css" rel="stylesheet" type="text/css" media="all">
+		<style type="text/css"></style>
+
+	</head>
+	
+	<body>		
+		<div id="intro" style="zoom: 0.8">
+			<div class="ui-grid-a" id="inputStuff" style="padding-top: 40px; padding-left: 200px; padding-right: 200px;">
+				<div class="ui-block-a" style="padding-left: 10px; padding-right: 10px;">
+					<form id="inputFrameCount" name="formFrameCount" onsubmit="return false;">
+						<label for="textinput-hide" class="ui-hidden-accessible">Total Frame Count</label>
+						<input type="text" name="field" id="textinput-hide" placeholder="Total Frame Count" value="">
+						<input type="button" id="frameCountButton" value="Set Frame Count" onclick="getTotalFrameCountOfSoundtrack(document.formFrameCount.field.value); document.getElementById('textinput-hide').disabled = 'disabled'; document.getElementById('frameCountButton').disabled = 'disabled';">
+					</form>
+					<br>
+					<section id="fileinput">
+						<div>
+							<input id="fileUpload" type="file" accept="image/*" multiple method="#files" onchange="loadingObjects(this.files); document.getElementById('fileUpload').disabled = 'disabled'; document.getElementById('exportButtons').style.display = 'initial';">
+							</input>
+						</div>
+					</section>
+				</div>
+				<div class="ui-block-b" style="padding-left: 10px; padding-right: 10px;">
+					<div id="exportButtons" style="display: none;">
+						<div id="exportArea">
+							<button onclick="createDownloadLink(masterBuffer)">export a wav file</button>
+						</div>
+						<br>
+						<div id="scriptTextField" style="zoom:0.8">
+							<label for="textareaForScript"> After Effects Script: </label>
+								<textarea cols="40" rows="8" name="textareaForScript" id="textareaForScript" placeholder="paste After Effects script here"></textarea>
+						</div>	
+						<button onclick="importAfterEffectsScript(document.getElementById('textareaForScript').value);"> Import </button>
+						<br>
+						<div id="scriptLocation">
+							<button onclick="createTextFile()">generate AfterEffects expressions script</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<p><br></p>
+		
+		<div id="canvases">
+		</div>
+		
+		<div id="buttons">
+			<div class="ui-grid-solo">
+				<div class="ui-block-a" id="imagebuttons">
+				</div>
+			</div>
+		</div>
+		
+		<p><br></p>
+		
+		<div id="interaction" style="zoom: 0.8">
+			<div class="ui-grid-a" style="padding: 30px;">
+				<div class="ui-block-a" style="width:65%; padding-left: 10px; padding-right: 10px;">
+					<div data-role="rangeslider">
+						<label for="range-1a" style="font: 16px Arial">Timeline Range:</label>
+						<input type="range" name="range-1a" id="timelineRangeStart" value="0" onchange="showSoundtrackTimeline(document.getElementById('timelineRangeStart').value, document.getElementById('timelineRangeEnd').value, document.getElementById('zoomSlider').value);">
+						<label for="range-1b" style="font: 16px Arial">Timeline Range:</label>
+						<input type="range" name="range-1b" id="timelineRangeEnd" value="0" onchange="showSoundtrackTimeline(document.getElementById('timelineRangeStart').value, document.getElementById('timelineRangeEnd').value, document.getElementById('zoomSlider').value);">
+					</div>
+				</div>
+				<div class="ui-block-b" style="width:35%; padding-left: 10px; padding-right: 10px;">
+					<div id="zoomDiv">
+						<form onsubmit="return false;">
+							<label for="slider-1" style="font: 16px Arial">Timeline Zoom:</label>
+							<input type="range" name="slider-1" id="zoomSlider" min="0.1" max="3.0" value="0.1" step="0.01" onchange="showSoundtrackTimeline(document.getElementById('timelineRangeStart').value, document.getElementById('timelineRangeEnd').value, document.getElementById('zoomSlider').value);">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="result">
+			<div class="ui-grid-a" style="padding: 10px; align: center;">
+				<div class="ui-block-a" id="timeline" style="width:100%">
+				</div>	
+			</div>
+		</div>
+
+	<script src="js/phillcorder.js"></script>
+	<script src="js/recorder.js"></script>
+	<script src="js/script.js"></script>
+
+</body>
+
+</html>
+

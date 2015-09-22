@@ -453,8 +453,7 @@ var createTextFile = function() {
 	}
 }
 
-// acquired from https://github.com/b1rdex/nw-contextmenu
-// start quote
+// start nw-contextmenu
 $(function() {
   function Menu(cutLabel, copyLabel, pasteLabel) {
     var gui = require('nw.gui')
@@ -495,7 +494,7 @@ $(function() {
     menu.popup(e.originalEvent.x, e.originalEvent.y);
   });
 });
-// end quote
+// end nw-contextmenu
 
 // function for handling imported aftereffects script and creating a sequence from past scripts....string parsing/formatting stuff
 var importAfterEffectsScript = function(scriptImportText) {
